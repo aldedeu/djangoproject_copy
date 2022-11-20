@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
-
+#coucou
 class Product(models.Model):
     reference = models.CharField(max_length=100, null=False)
     price = models.IntegerField(default=0, null=False)
