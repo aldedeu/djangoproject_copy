@@ -31,6 +31,7 @@ class Product(models.Model):
     def __str__(self):
         return self.reference
 
+    #coucou
 
 class User(models.Model):
     ncli = models.IntegerField(null=False)
