@@ -8,7 +8,7 @@
     <h1> Voici tous les produits que nous proposons </h1>
     <ul>
         {% for product in display_products %}
-            <li><a href="product/{{ product.reference }}">{{ product.entitled }}</a></li>
+            <li><a href="{{ product.reference }}">{{ product.entitled }}</a></li>
         {% endfor %}
     </ul>
 </body>
