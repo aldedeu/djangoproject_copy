@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Voici la liste de tous nos magasins</h1>
+    <ul>
+        {% for shops in display_shops %}
+            <li><a href="shop/{{ shops.reference_shop }}">{{ shops.shop_name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
