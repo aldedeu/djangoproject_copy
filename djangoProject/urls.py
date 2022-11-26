@@ -22,6 +22,7 @@ urlpatterns = [
     path('', polls.views.HomePage),
     path('product/', polls.views.Products),
     path('shop/', polls.views.Shops),
+    path('shop/<int:shop_reference>', GreenCompare.views.detailShop),
     path('login/', polls.views.LogIn),
     path('admin/', admin.site.urls),
 ]
