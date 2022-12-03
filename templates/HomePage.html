@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+
+{% load static %}
+
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/bootstrap.css' %}"
+/>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +18,9 @@
     <ul>
 
     </ul>
-    <li><a href="shop" >Magasins</a></li>
+
+    <li><a href="shop">Magasins</a>
+        <br>
+        <a href="register">S'enregistrer</a></li>
 </body>
 </html>
