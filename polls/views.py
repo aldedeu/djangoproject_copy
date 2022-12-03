@@ -1,30 +1,33 @@
 from django.shortcuts import render
 
+# Create your views here.
 from django.http import HttpResponse
 from django.template import loader
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from .forms import UserForm, CreateUserForm
 
-from .models import Product, User, Shop
 
-def Products(request):
-    display_products = Product.objects.all()
+from .models import Product, UserTable, Shop
+
+def Products(request, shop_reference, product_reference):
+    display_products = []
+    for products in Shop.product_reference:
+        display_products.append(products)
+
     template = loader.get_template('Display_products.html')
-    context = {'display_products': display_products}
-    print(context)
+    context = {'display_products': display_products, 'shop_reference': shop_reference, 'product_reference': product_reference}
     return HttpResponse(template.render(context, request))
-
 
 def HomePage(request):
     template = loader.get_template("HomePage.html")
     context = {}
-    print(context)
     return HttpResponse(template.render(context, request))
 
 def Shops(request):
     display_shops = Shop.objects.all()
     template = loader.get_template("Display_shops.html")
     context = {'display_shops': display_shops}
-    print(context)
+
     return HttpResponse(template.render(context, request))
 
 def detailShop(request, shop_reference):
@@ -39,14 +42,20 @@ def detailShop(request, shop_reference):
     context = {'details': details, 'products_in_shop': products_in_shop}
     return HttpResponse(template.render(context, request))
 
-def LogIn(request):
-    username = request.POST['username']
-    password = request.POST['password']
+def loginPage(request):
 
-    user = authenticate(request, username=username, password=password)
+    template = loader.get_template("accounts/login.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
 
-    if user is not None:
-        login(request, user)
+def registerPage(request):
+    form = CreateUserForm()
 
-    else:
-        print("Invalid login, please try again")
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    template = loader.get_template("accounts/register.html")
+    context = {'form': form}
+    return HttpResponse(template.render(context, request))
