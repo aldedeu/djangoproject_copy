@@ -32,24 +32,34 @@ class Product(models.Model):
         return self.reference
 
 
-
-class User(models.Model):
-    ncli = models.IntegerField(null=False)
-    name = models.CharField(max_length=200, null=False)
-    surname = models.CharField(max_length=200, null=False)
-    address = models.CharField(max_length=1000, null=False)
+class UserTable(models.Model):
+    username = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=200, null=False)
+    last_name = models.CharField(max_length=200, null=False)
+    date_joined = models.DateTimeField('date_joined')
     email = models.CharField(max_length=200, default='No email')
-    number = models.IntegerField(default=0)
-    reference_product = models.ManyToManyField(Product)
+    password = models.CharField(max_length=100, null=False)
 
-    def __int__(self):
-        return self.ncli
+    def __str__(self):
+        return self.username
 
 class Shop(models.Model):
+
+
+    class Category(models.TextChoices):
+        Fruits = 'Fruits'
+        Vegetables = 'Légumes'
+        Starch = 'Féculents'
+        Meat = 'Viande'
+        Drinks = 'Boissons'
+        ElseFood = 'Autres aliments'
+        Others = 'Autres'
+
+
     reference_shop = models.CharField(max_length=200, null=False)
     shop_name = models.CharField(max_length=1000, null=False)
     localisation = models.CharField(max_length=1000, null=False)
-    category = models.CharField(max_length=1000, default='No category')
+    category = models.CharField(max_length=100, choices=Category.choices)
     description = models.CharField(max_length=1000, default='No description')
     opening = models.BooleanField()
     reference_product = models.ManyToManyField(Product)
