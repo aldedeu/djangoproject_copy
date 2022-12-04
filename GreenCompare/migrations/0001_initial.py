@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('address', models.CharField(max_length=1000)),
                 ('email', models.CharField(default='No email', max_length=200)),
                 ('number', models.IntegerField(default=0)),
-                ('reference_product', models.ManyToManyField(to='polls.product')),
+                ('reference_product', models.ManyToManyField(to='GreenCompare.product')),
             ],
         ),
         migrations.CreateModel(
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('category', models.CharField(default='No category', max_length=1000)),
                 ('description', models.CharField(default='No description', max_length=1000)),
                 ('opening', models.BooleanField()),
-                ('reference_product', models.ManyToManyField(to='polls.product')),
+                ('reference_product', models.ManyToManyField(to='GreenCompare.product')),
             ],
         ),
     ]

@@ -8,7 +8,7 @@
     <h1>Voici la liste de tous nos magasins</h1>
     <ul>
         {% for shops in display_shops %}
-            <li><a href="{{ shops.reference_shop }}">{{ shops.shop_name }}</a></li>
+            <li><a href="{{ shops.id }}">{{ shops.shop_name }}</a></li>
         {% endfor %}
     </ul>
 </body>

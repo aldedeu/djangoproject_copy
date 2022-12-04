@@ -21,7 +21,6 @@ class Product(models.Model):
         Others = 'Autres'
 
 
-    reference = models.CharField(max_length=100, null=False)
     price = models.FloatField(default=0, null=False)
     productor_name = models.CharField(max_length=200, default='No data for the productor name')
     entitled = models.CharField(max_length=200, null=False)
@@ -29,7 +28,7 @@ class Product(models.Model):
     eco_score = models.CharField(max_length=1, choices=EcoScore.choices)
 
     def __str__(self):
-        return self.reference
+        return self.entitled + ' - ' + self.id
 
 
 class UserTable(models.Model):
@@ -56,7 +55,6 @@ class Shop(models.Model):
         Others = 'Autres'
 
 
-    reference_shop = models.CharField(max_length=200, null=False)
     shop_name = models.CharField(max_length=1000, null=False)
     localisation = models.CharField(max_length=1000, null=False)
     category = models.CharField(max_length=100, choices=Category.choices)

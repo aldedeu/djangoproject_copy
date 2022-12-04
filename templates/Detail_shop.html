@@ -5,17 +5,17 @@
     <title></title>
 </head>
 <body>
-    <a> {{ details.shop_name }}</a>
+    <span> {{ details.shop_name }}</span>
     <br>
-    <a> {{ details.localisation }}</a>
+    <span> {{ details.localisation }}</span>
     <br>
-    <a> {{ details.category }}</a>
+    <span> {{ details.category }}</span>
     <br>
-    <a> {{ details.description }}</a>
+    <span> {{ details.description }}</span>
     <br>
-    <a> Open ? {{ details.opening }}</a>
+    <span> Open ? {{ details.opening }}</span>
     <br>
-    <li><a href="{{ shop_reference }}/{{ details.reference_product }}">{{ details.reference_product }}</a></li>
+    <a href="/products/{{ details.id }}">Produits</a>
     <br>
 </body>
 </html>
