@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Product(models.Model):
 
@@ -28,19 +29,14 @@ class Product(models.Model):
     eco_score = models.CharField(max_length=1, choices=EcoScore.choices)
 
     def __str__(self):
-        return self.entitled + ' - ' + self.id
+        return self.entitled + ' - ' + str(self.id)
 
-
-class UserTable(models.Model):
-    username = models.CharField(max_length=50)
-    first_name = models.CharField(max_length=200, null=False)
-    last_name = models.CharField(max_length=200, null=False)
-    date_joined = models.DateTimeField('date_joined')
-    email = models.CharField(max_length=200, default='No email')
-    password = models.CharField(max_length=100, null=False)
+class UserLocation(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.username
+        return 'user ' + self.user.username + ' with location : ' + self.location
 
 class Shop(models.Model):
 

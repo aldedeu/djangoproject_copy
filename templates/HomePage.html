@@ -14,7 +14,7 @@
     <title></title>
 </head>
 <body>
-    <h1> Bienvenue sur le site de GreenCompare </h1>
+    <h1>Bonjour {% if user is not None and user.is_authenticated %} {{ user.first_name }} {% endif %} et bienvenue sur le site de GreenCompare </h1>
     <ul>
         <li>
             <a href="shop">Magasins</a>
@@ -22,6 +22,11 @@
         <li>
             <a href="login">Se connecter</a>
         </li>
+        {% if user is not None and user.is_authenticated %}
+            <li>
+                <a href="{% url 'logout' %}">Se déconnecter</a>
+            </li>
+        {% endif %}
         <li>
             <a href="register">S'enregistrer</a>
         </li>

@@ -27,6 +27,7 @@ urlpatterns = [
     path('product/<str:product_reference>', GreenCompare.views.ProductDetails),
     path('admin/', admin.site.urls),
     path('change-password/', auth_views.PasswordChangeView.as_view()),
-    path('login/', GreenCompare.views.loginPage, name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', GreenCompare.views.registerPage, name='register')
 ]
