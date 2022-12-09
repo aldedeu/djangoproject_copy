@@ -57,7 +57,8 @@ class Shop(models.Model):
     description = models.CharField(max_length=1000, default='No description')
     opening = models.BooleanField()
     reference_product = models.ManyToManyField(Product)
-
+    creationDate = models.DateTimeField(auto_now=True)
+    logo = models.ImageField(upload_to='shop_images/')
 
     def __str__(self):
         return self.shop_name
