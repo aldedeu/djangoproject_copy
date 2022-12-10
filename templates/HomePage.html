@@ -100,7 +100,13 @@
 
     <section class="hero">
         <h1>Bonjour {% if user is not None and user.is_authenticated %} {{ user.first_name }} {% endif %} et bienvenue sur le site de GreenCompare</h1>
-        <h3> Enregistrez-vous afin de voir la liste de nos magasins ! </h3>
+        <h3>
+            {% if user is not None and user.is_authenticated %}
+                Tu es bien connecté(e), tu peux désormais voir la liste de nos magasins !
+            {% else %}
+                Enregistrez-vous afin de voir la liste de nos magasins !
+            {% endif %}
+        </h3>
         <button><a href="/shop">Nos magasins</a></button>
     </section>
 
