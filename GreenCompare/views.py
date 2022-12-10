@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.shortcuts import redirect
 from .forms import CreateUserForm
-
+from django.contrib.auth.decorators import login_required
 
 from .models import Product, Shop, UserLocation
 
@@ -36,7 +36,7 @@ def HomePage(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
-
+@login_required(login_url='/login')
 def Shops(request):
     ##Si un utilisateur est connecté et qu'il a une localisation, affiche en premier les magasins qu'il y a à la même localisation
     if request.user is not None and request.user.is_authenticated and hasattr(request.user, 'userlocation'):
